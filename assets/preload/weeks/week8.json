@@ -1,0 +1,32 @@
+{
+	"songs": [
+		[
+			"loneliness",
+			"dad",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": true,
+	"weekBackground": "mickey",
+	"difficulties": "",
+	"weekCharacters": [
+		"mickey",
+		"",
+		"bf"
+	],
+	"storyName": "sad mouse's sucide",
+	"weekName": "mickey",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": false,
+	"weekBefore": "tutorial",
+	"startUnlocked": true
+}

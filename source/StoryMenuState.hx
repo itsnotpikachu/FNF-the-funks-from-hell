@@ -48,6 +48,7 @@ class StoryMenuState extends MusicBeatState
 	var rightArrow:FlxSprite;
 
 	var loadedWeeks:Array<WeekData> = [];
+	var epic:FlxSprite;
 
 	override function create()
 	{
@@ -257,7 +258,16 @@ class StoryMenuState extends MusicBeatState
 			}
 			else if (controls.ACCEPT)
 			{
-				selectWeek();
+				//selectWeek();
+				FlxG.sound.play(Paths.sound('fart'));
+				epic = new FlxSprite(0, 0).loadGraphic(Paths.image('funkay'));
+				epic.scrollFactor.set(0, 0.9);
+				epic.updateHitbox();
+				epic.screenCenter();
+				epic.antialiasing = ClientPrefs.globalAntialiasing;
+				add(epic);
+				PlayState.SONG = Song.loadFromJson('sing-with-maky', 'sing-with-maky');
+				LoadingState.loadAndSwitchState(new PlayState());
 			}
 		}
 
