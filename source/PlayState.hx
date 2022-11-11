@@ -541,6 +541,11 @@ class PlayState extends MusicBeatState
 					add(stageCurtains);
 				}
 				dadbattleSmokes = new FlxSpriteGroup(); //troll'd
+				
+				case 'clubhouse': //Week 1
+				var bg:BGSprite = new BGSprite('mackhouse', -600, -200, 0.9, 0.9);
+				add(bg);
+
 
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
