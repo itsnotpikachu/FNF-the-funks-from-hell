@@ -2292,6 +2292,11 @@
 		],
 		"player3": null,
 		"song": "sing-with-maky",
+<<<<<<< HEAD
+=======
+		"stage": "clubhouse",
+		"needsVoices": true,
+>>>>>>> 0f19f179179a3367a09cd4939a44421ab582787d
 		"validScore": true,
 		"needsVoices": true,
 		"stage": "clubhouse",
