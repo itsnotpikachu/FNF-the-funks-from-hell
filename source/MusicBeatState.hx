@@ -2,6 +2,7 @@ package;
 
 import Conductor.BPMChangeEvent;
 import flixel.FlxG;
+import Shaders.ChromaHandler;
 import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxRect;
 import flixel.util.FlxTimer;
@@ -156,6 +157,10 @@ class MusicBeatState extends FlxUIState
 		if (curStep % 4 == 0)
 			beatHit();
 	}
+
+	public function setChrome(daChrome:Float):Void
+		ChromaHandler.setChrome(daChrome);
+
 
 	public function beatHit():Void
 	{

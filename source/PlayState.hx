@@ -49,6 +49,8 @@ import editors.CharacterEditorState;
 import flixel.group.FlxSpriteGroup;
 import flixel.input.keyboard.FlxKey;
 import Note.EventNote;
+import openfl.filters.BitmapFilter;
+import openfl.filters.ShaderFilter;
 import openfl.events.KeyboardEvent;
 import flixel.effects.particles.FlxEmitter;
 import flixel.effects.particles.FlxParticle;
@@ -61,9 +63,11 @@ import FunkinLua;
 import DialogueBoxPsych;
 import Conductor.Rating;
 
+import Shaders.FXHandler;
+
 #if !flash 
 import flixel.addons.display.FlxRuntimeShader;
-import openfl.filters.ShaderFilter;
+//import openfl.filters.ShaderFilter;
 #end
 
 #if sys
@@ -136,6 +140,8 @@ class PlayState extends MusicBeatState
 
 	public var playbackRate(default, set):Float = 1;
 
+	var filters:Array<BitmapFilter> = [];
+
 	public var boyfriendGroup:FlxSpriteGroup;
 	public var dadGroup:FlxSpriteGroup;
 	public var gfGroup:FlxSpriteGroup;
@@ -176,6 +182,8 @@ class PlayState extends MusicBeatState
 	public var camZoomingMult:Float = 1;
 	public var camZoomingDecay:Float = 1;
 	private var curSong:String = "";
+
+	var chromVal:Float = 0;
 
 	public var gfSpeed:Int = 1;
 	public var health:Float = 1;
@@ -379,6 +387,18 @@ class PlayState extends MusicBeatState
 		rating.score = 50;
 		rating.noteSplash = false;
 		ratingsData.push(rating);
+
+		//FlxG.game.setFilters(filters);
+
+		//FlxG.game.filtersEnabled = true;
+
+		//filters.push(chromaticAberration);
+
+		//camGame.setFilters(filters);
+		//camGame.filtersEnabled = true;
+
+		//camHUD.filtersEnabled = true;
+		//camHUD.setFilters(filters);
 
 		// For the "Just the Two of Us" achievement
 		for (i in 0...keysArray.length)
@@ -2886,6 +2906,8 @@ class PlayState extends MusicBeatState
 		}*/
 		callOnLuas('onUpdate', [elapsed]);
 
+		//setChrome(chromVal);
+
 		switch (curStage)
 		{
 			case 'tank':
@@ -4604,6 +4626,15 @@ class PlayState extends MusicBeatState
 	{
 		if (Paths.formatToSongPath(SONG.song) != 'tutorial')
 			camZooming = true;
+
+		if(SONG.player2 == 'dad')
+		{
+			FlxG.camera.shake(0.015, 0.1);
+			camHUD.shake(0.005, 0.1);
+
+			chromVal = 0.01;
+			FlxTween.tween(this, {chromVal: 0}, 0.03);
+		}
 
 		if(note.noteType == 'Hey!' && dad.animOffsets.exists('hey')) {
 			dad.playAnim('hey', true);

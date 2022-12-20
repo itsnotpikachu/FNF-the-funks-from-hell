@@ -94,7 +94,7 @@ class MainMenuState extends MusicBeatState
 		magenta.screenCenter();
 		magenta.visible = false;
 		magenta.antialiasing = ClientPrefs.globalAntialiasing;
-		magenta.color = 0xFFfd719b;
+		magenta.color = 0xff000000;
 		add(magenta);
 		
 		// magenta.scrollFactor.set();
@@ -102,7 +102,7 @@ class MainMenuState extends MusicBeatState
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
-		var scale:Float = 0.6;
+		var scale:Float = 0.3;
 		/*if(optionShit.length > 6) {
 			scale = 6 / optionShit.length;
 		}*/
