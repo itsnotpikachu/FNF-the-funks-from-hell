@@ -258,16 +258,7 @@ class StoryMenuState extends MusicBeatState
 			}
 			else if (controls.ACCEPT)
 			{
-				//selectWeek();
-				FlxG.sound.play(Paths.sound('fart'));
-				epic = new FlxSprite(0, 0).loadGraphic(Paths.image('funkay'));
-				epic.scrollFactor.set(0, 0.9);
-				epic.updateHitbox();
-				epic.screenCenter();
-				epic.antialiasing = ClientPrefs.globalAntialiasing;
-				add(epic);
-				PlayState.SONG = Song.loadFromJson('sing-with-maky', 'sing-with-maky');
-				LoadingState.loadAndSwitchState(new PlayState());
+				selectWeek();
 			}
 		}
 
@@ -297,7 +288,7 @@ class StoryMenuState extends MusicBeatState
 		{
 			if (stopspamming == false)
 			{
-				FlxG.sound.play(Paths.sound('confirmMenu'));
+				FlxG.sound.play(Paths.sound('fart'));
 
 				grpWeekText.members[curWeek].startFlashing();
 
@@ -328,9 +319,15 @@ class StoryMenuState extends MusicBeatState
 
 			PlayState.storyDifficulty = curDifficulty;
 
-			PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
+			PlayState.SONG = Song.loadFromJson('sing-with-maky', 'sing-with-maky');
 			PlayState.campaignScore = 0;
 			PlayState.campaignMisses = 0;
+			epic = new FlxSprite(0, 0).loadGraphic(Paths.image('funkay'));
+				epic.scrollFactor.set(0, 0.9);
+				epic.updateHitbox();
+				epic.screenCenter();
+				epic.antialiasing = ClientPrefs.globalAntialiasing;
+				add(epic);
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
 				LoadingState.loadAndSwitchState(new PlayState(), true);
